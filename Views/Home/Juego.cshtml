@@ -1,0 +1,104 @@
+
+@{
+    ViewData["Title"] = "Juego";
+}
+<link rel="stylesheet" href="/css/site.css">
+<header>
+ <a  href= '@Url.Action("Index", "Home")' alt = "Ir al "> Home </a>
+
+</header>
+
+<body>
+  @if (ViewBag.VBComoVa != null)
+  {
+   <h1>
+   @for(int i = 0; i < ViewBag.VBComoVa.Length ;i++)
+    {
+     @ViewBag.VBComoVa[i]
+    }
+   </h1>
+  }
+
+
+
+  <h2> Lista de letras</h2>
+  @if (ViewBag.VBGano_Perdio != null)
+  {
+
+  
+   @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
+    {
+    <p>
+     @ViewBag.ListLetrasUsuario[i]
+     </p>
+    }
+  
+  }
+  else
+  {
+    @if (ViewBag.ListLetrasUsuario != null)
+    {
+      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
+      {
+       <p>
+         @ViewBag.ListLetrasUsuario[i]
+        </p>
+      }
+    }
+  }
+
+
+
+  <h3> cantidad de jugadas
+    @if (ViewBag.VBGano_Perdio != null)
+    {
+      @ViewBag.Intentos 
+    }
+    else
+    {
+      @ViewBag.Intentos
+    }
+  </h3>
+
+
+
+  @if(ViewBag.VBGano_Perdio == null)
+  {
+    <form  method= "post" action = '@Url.Action("CompararLetra", "Home")'>
+     <p >
+       Letra jugar 
+       <textarea name="Letra" id="Idletra" rows="1" cols="10">
+       </textarea>
+       <input class="letra" type="submit" value=" Arriesgar Letra" >
+      </p>
+    </form>
+  }
+
+  @if(ViewBag.VBGano_Perdio == null)
+   {
+    <form  method= "Post" action = '@Url.Action("CompararPalabra", "Home")'>
+      <p >
+       Palabra a Arriesgar: 
+       <textarea name="PalabraUsario" id="IdPalabra" rows="1" cols="10"> </textarea>
+       <input class="palabra" type="submit" value=" Arriesgar Palabra">
+      </p>
+    </form>
+  }
+
+  @if(ViewBag.VBGano_Perdio != null)
+  {
+   <h2> @ViewBag.VBGano_Perdio</h2>
+
+   @if (ViewBag.VBGano_Perdio == "Ganaste")
+    {
+        <img src="~/giphy.gif" alt="Gif">
+    }
+   else
+    {
+      <h2> La palabra era: @ViewBag.VBPalabraSelect</h2>
+      <img src="~/gIFPERIDO.gif" alt="Gif">
+    }
+
+   }
+</body>
+  

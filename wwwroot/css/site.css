@@ -1,0 +1,67 @@
+html {
+  font-size: 14px;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 10px;
+  padding: 10px;
+}
+
+
+footer {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  color:black;
+}
+
+*{
+  background-color:darkblue;
+}
+header{
+ text-align: left;
+ color:white;
+}
+header a{
+  color: black;
+  border-radius: 60px;
+  background-color: white;
+}
+
+body{
+  text-align: center;
+  color: white;
+}
+.letra{
+border-radius: 10px;
+background-color: red;
+color: white;
+  }
+.palabra{
+   border-radius: 10px;
+   background-color:red;
+   color:white;
+}
+
+div a{
+  color: red
+}
+textarea{
+  background-color: white;
+  color:black;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+p{
+  color: white;
+  font-size: 20px;
+}
