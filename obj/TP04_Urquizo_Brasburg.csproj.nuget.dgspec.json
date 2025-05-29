@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/francourquizo/Documents/Franco Tareas_Tp_cole/Prog II/TP04_Horcado_Brasburg_Urquizo-main/TP04_Urquizo_Brasburg.csproj": {}
+    "Z:\\2025\\Prog II\\TP04_Horcado_Brasburg_Urquizo-main\\TP04_Urquizo_Brasburg.csproj": {}
   },
   "projects": {
-    "/Users/francourquizo/Documents/Franco Tareas_Tp_cole/Prog II/TP04_Horcado_Brasburg_Urquizo-main/TP04_Urquizo_Brasburg.csproj": {
+    "Z:\\2025\\Prog II\\TP04_Horcado_Brasburg_Urquizo-main\\TP04_Urquizo_Brasburg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/francourquizo/Documents/Franco Tareas_Tp_cole/Prog II/TP04_Horcado_Brasburg_Urquizo-main/TP04_Urquizo_Brasburg.csproj",
+        "projectUniqueName": "Z:\\2025\\Prog II\\TP04_Horcado_Brasburg_Urquizo-main\\TP04_Urquizo_Brasburg.csproj",
         "projectName": "TP04_Urquizo_Brasburg",
-        "projectPath": "/Users/francourquizo/Documents/Franco Tareas_Tp_cole/Prog II/TP04_Horcado_Brasburg_Urquizo-main/TP04_Urquizo_Brasburg.csproj",
-        "packagesPath": "/Users/francourquizo/.nuget/packages/",
-        "outputPath": "/Users/francourquizo/Documents/Franco Tareas_Tp_cole/Prog II/TP04_Horcado_Brasburg_Urquizo-main/obj/",
+        "projectPath": "Z:\\2025\\Prog II\\TP04_Horcado_Brasburg_Urquizo-main\\TP04_Urquizo_Brasburg.csproj",
+        "packagesPath": "C:\\Users\\49257286\\.nuget\\packages\\",
+        "outputPath": "Z:\\2025\\Prog II\\TP04_Horcado_Brasburg_Urquizo-main\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/francourquizo/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\49257286\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,12 +43,21 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "NewtonSoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

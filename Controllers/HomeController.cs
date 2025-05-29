@@ -15,15 +15,20 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
+        Juego juego = new Juego();
         Juego.InicializarJuego();
         ViewBag.VBIndex = Juego.DicPalabraJuego;
         return View();
     }
     public IActionResult IrAlJuego()
     {
+         Juego juego = new Juego();
         Juego.InicializarJuego();
         ViewBag.VBJuego = Juego.DicPalabraJuego;
+        
+        //lo guardamos 
+     HttpContext.Session.ObjectToString ("Juego", Objetos.ToString(juego));
+        
         ViewBag.VBComoVa = Juego.Principio();
         ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
 
@@ -32,7 +37,10 @@ public class HomeController : Controller
     public IActionResult CompararLetra(char letra)
     {
        
-       
+        Juego juego = new Juego();
+        HttpContext.Session.ObjectToString ("Juego", Objetos.ListToString(juego));
+
+
         if (!Juego.ListLetrasUsuario.Contains(letra))
         {
 
