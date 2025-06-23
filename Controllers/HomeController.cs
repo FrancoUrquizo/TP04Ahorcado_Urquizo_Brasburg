@@ -16,18 +16,19 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         Juego juego = new Juego();
-        Juego.InicializarJuego();
+        juego.InicializarJuego();
         ViewBag.VBIndex = Juego.DicPalabraJuego;
         return View();
     }
     public IActionResult IrAlJuego()
     {
-         Juego juego = new Juego();
-        Juego.InicializarJuego();
+         juego juego = new Juego();
+        juego.InicializarJuego();
         ViewBag.VBJuego = Juego.DicPalabraJuego;
         
-        //lo guardamos 
-     HttpContext.Session.ObjectToString ("Juego", Objetos.ToString(juego));
+     var miObjeto = new Juego();
+     string juegoJson = Objeto.ObjectToString(miObjeto);
+     HttpContext.Session.SetString("Juego", juegoJson);
         
         ViewBag.VBComoVa = Juego.Principio();
         ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
@@ -35,65 +36,80 @@ public class HomeController : Controller
         return View("Juego");
     }
     public IActionResult CompararLetra(char letra)
+{
+   
+    char letraMayus = char.ToUpper(letra);
+
+  string? juegoJson = HttpContext.Session.GetString("Juego");
+if (string.IsNullOrEmpty(juegoJson))
+{
+    return RedirectToAction("Index");
+}
+
+Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+   
+    if (!juego.ListLetrasUsuario.Contains(letraMayus))
     {
-       
-        Juego juego = new Juego();
-        HttpContext.Session.ObjectToString ("Juego", Objetos.ListToString(juego));
-
-
-        if (!Juego.ListLetrasUsuario.Contains(letra))
-        {
-
-            Juego.ListLetrasUsuario.Add(letra);
-        }
-        var comoVa = Juego.MostarComoVa(letra);
-             ViewBag.comoVa = comoVa;
-            ViewBag.VBComoVa = comoVa;
-            ViewBag.Intentos = Juego.contadorInt;
-            
-
-        
-            ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
-
-        if (comoVa != null && !comoVa.Contains('_'))
-        {
-            ViewBag.VBGano_Perdio = "Ganaste";
-            ViewBag.VBComoVa = Juego.palabraSeleccionada;
-            ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
-            ViewBag.Intentos = Juego.contadorInt;
-        }
-        return View("Juego");
-
+        juego.ListLetrasUsuario.Add(letraMayus);
     }
 
+   
+    var comoVa = juego.MostarComoVa(letraMayus);
 
+    
+    ViewBag.comoVa = comoVa;
+    ViewBag.VBComoVa = comoVa;
+    ViewBag.Intentos = juego.contadorInt;
+    ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
 
-    public IActionResult CompararPalabra(string PalabraUsario)
+   
+    if (comoVa != null && !comoVa.Contains('_'))
     {
-       
-        if (! (PalabraUsario == null || PalabraUsario.Trim() == ""))
-        {
-
-            if (PalabraUsario != null && PalabraUsario.Trim().ToLower() == Juego.palabraSeleccionada.Trim().ToLower())
-            {
-                ViewBag.VBGano_Perdio = "Ganaste";
-                ViewBag.VBComoVa = Juego.palabraSeleccionada;
-                ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
-                ViewBag.Intentos = Juego.contadorInt;
-            }
-            else
-            {
-                ViewBag.VBGano_Perdio = "Perdiste";
-                Juego.contadorInt++;
-                ViewBag.VBPalabraSelect = Juego.palabraSeleccionada;
-                ViewBag.ListLetrasUsuario = Juego.ListLetrasUsuario;
-                ViewBag.Intentos = Juego.contadorInt;
-            }
-        }
-       ;
-        return View("Juego");
-
+        ViewBag.VBFrase = "Ganaste!";
+        ViewBag.VBComoVa = juego.palabraSeleccionada;
     }
+
+   
+    HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+
+    return View("Juego");
+}
+
+
+
+   public IActionResult CompararPalabra(string PalabraUsuario)
+{
+ string? juegoJson = HttpContext.Session.GetString("Juego");
+if (string.IsNullOrEmpty(juegoJson))
+{
+    return RedirectToAction("Index");
+}
+
+Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+   
+    string palabraUsuarioMayus = PalabraUsuario.ToUpper();
+    string palabraCorrectaMayus = juego.palabraSeleccionada.ToUpper();
+
+    if (palabraUsuarioMayus == palabraCorrectaMayus)
+    {
+        ViewBag.VBFrase = "Ganaste!";
+        ViewBag.VBComoVa = palabraCorrectaMayus;
+    }
+    else
+    {
+        ViewBag.VBFrase = "Perdiste!";
+        ViewBag.VBComoVa = juego.MostarComoVa(' '); 
+        juego.contadorInt++; 
+    }
+
+    ViewBag.Intentos = juego.contadorInt;
+    ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
+
+  
+    HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+
+    return View("Juego");
+}
 
 
 

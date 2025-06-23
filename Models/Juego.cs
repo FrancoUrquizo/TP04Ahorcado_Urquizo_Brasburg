@@ -4,8 +4,8 @@ public  class Juego
     public  List<char> ListLetrasUsuario = new List<char>();
 
     public  int contadorInt { get; set; }
-    public  int ultimoId { get; private set; }
-    public  List<string> posiblesPalabras = new List<string> { "auto", "vaso", "casa", "gatos", "mouse", "perro" };
+    public   int ultimoId { get; private set; }
+    public   List<string> posiblesPalabras = new List<string> { "auto", "vaso", "casa", "gatos", "mouse", "perro" };
     public  string palabraSeleccionada = "";
     public  void InicializarJuego()
     {
@@ -22,7 +22,7 @@ public  class Juego
 
     }
 
-    public static char[] MostarComoVa(char LetrasUsuario)
+    public  char[] MostarComoVa(char LetrasUsuario)
     {
        
         char[] comoVa = new char[palabraSeleccionada.Length];
@@ -57,7 +57,7 @@ public  class Juego
 
     }
    
-public static char[] Principio ()
+public  char[] Principio ()
 {
         char[] comoVa = new char[palabraSeleccionada.Length];
 
