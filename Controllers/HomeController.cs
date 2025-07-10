@@ -59,6 +59,7 @@ public class HomeController : Controller
         ViewBag.VBComoVa = comoVa;
         ViewBag.Intentos = juego.contadorInt;
         ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
+       ViewBag.VBPalabraSelect= juego.palabraSeleccionada;
 
         if (comoVa != null && !comoVa.Contains('_'))
         {
@@ -72,10 +73,10 @@ public class HomeController : Controller
     }
 public IActionResult CompararPalabra(string? PalabraUsuario)
 {
-    // Validación para evitar el NullReferenceException
+   
     if (string.IsNullOrEmpty(PalabraUsuario))
     {
-        ViewBag.VBFrase = "Debes ingresar una palabra.";
+        ViewBag.VBFrase = "Perdiste";
         ViewBag.Gano_Perdio = null;
         return View("Juego");
     }
@@ -95,19 +96,21 @@ public IActionResult CompararPalabra(string? PalabraUsuario)
     {
         ViewBag.VBFrase = "Ganaste";
         ViewBag.VBComoVa = palabraCorrectaMayus;
-        ViewBag.Gano_Perdio = "gano";
+      
     }
     else
     {
-        ViewBag.VBFrase = "Perdiste";
-        ViewBag.VBComoVa = juego.MostarComoVa(' ');
-        juego.contadorInt++;
-        ViewBag.Gano_Perdio = "perdio";
-        ViewBag.VBPalabraSelect = palabraCorrectaMayus;
+       ViewBag.VBFrase = "Perdiste";
+     ViewBag.VBComoVa = palabraCorrectaMayus;
+     juego.contadorInt = juego.palabraSeleccionada.Length; 
+     ViewBag.VBPalabraSelect = palabraCorrectaMayus;
+       
+       
     }
-
+   
     ViewBag.Intentos = juego.contadorInt;
     ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
+ ViewBag.VBPalabraSelect= juego.palabraSeleccionada;
 
     HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
 

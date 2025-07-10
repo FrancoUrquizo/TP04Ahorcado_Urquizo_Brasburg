@@ -17,14 +17,14 @@ public class Juego
         Random random = new Random();
         ListLetrasUsuario = new List<char>();
         contadorInt = 0;
-        palabraSeleccionada = posiblesPalabras[random.Next(posiblesPalabras.Count)].ToUpper(); // Palabra en mayúsculas
+        palabraSeleccionada = posiblesPalabras[random.Next(posiblesPalabras.Count)].ToUpper(); 
         ultimoId++;
         DicPalabraJuego[ultimoId] = palabraSeleccionada;
     }
 
     public char[] MostarComoVa(char LetrasUsuario)
     {
-        LetrasUsuario = char.ToUpper(LetrasUsuario); // Letra en mayúsculas
+        LetrasUsuario = char.ToUpper(LetrasUsuario); 
         char[] comoVa = Principio();
 
         contadorInt++;

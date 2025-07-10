@@ -22,20 +22,35 @@
 
 
   <h2> Lista de letras</h2>
-  @if (ViewBag.VBFrase != null)
+  @if (ViewBag.VBFrase == null)
   {
 
+     @if (ViewBag.ListaLetrasUsuario != null)
+     {
   
-   @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
-    {
-    <p>
-     @ViewBag.ListLetrasUsuario[i]
-     </p>
-    }
+      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
+      {
+      <p>
+       @ViewBag.ListLetrasUsuario[i]
+       </p>
+      }
   
+     }
   }
-  else
+
+   @if (ViewBag.VBFrase == "Ganaste")
   {
+    @if (ViewBag.ListLetrasUsuario != null)
+    {
+      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
+      {
+       <p>
+         @ViewBag.ListLetrasUsuario[i]
+        </p>
+      }
+    }
+  }
+  else {
     @if (ViewBag.ListLetrasUsuario != null)
     {
       @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
