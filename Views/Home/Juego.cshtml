@@ -22,7 +22,7 @@
 
 
   <h2> Lista de letras</h2>
-  @if (ViewBag.VBGano_Perdio != null)
+  @if (ViewBag.VBFrase != null)
   {
 
   
@@ -50,7 +50,7 @@
 
 
   <h3> cantidad de jugadas
-    @if (ViewBag.VBGano_Perdio != null)
+    @if (ViewBag.VBFrase != null)
     {
       @ViewBag.Intentos 
     }
@@ -62,7 +62,7 @@
 
 
 
-  @if(ViewBag.VBGano_Perdio == null)
+  @if(ViewBag.VBFrase == null)
   {
     <form  method= "post" action = '@Url.Action("CompararLetra", "Home")'>
      <p >
@@ -74,7 +74,7 @@
     </form>
   }
 
-  @if(ViewBag.VBGano_Perdio == null)
+  @if(ViewBag.VBFrase == null)
    {
     <form  method= "Post" action = '@Url.Action("CompararPalabra", "Home")'>
       <p >
@@ -85,11 +85,11 @@
     </form>
   }
 
-  @if(ViewBag.VBGano_Perdio != null)
+  @if(ViewBag.VBFrase != null)
   {
-   <h2> @ViewBag.VBGano_Perdio</h2>
+   <h2> @ViewBag.VBFrase</h2>
 
-   @if (ViewBag.VBGano_Perdio == "Ganaste")
+   @if (ViewBag.VBFrase == "Ganaste")
     {
         <img src="~/giphy.gif" alt="Gif">
     }
