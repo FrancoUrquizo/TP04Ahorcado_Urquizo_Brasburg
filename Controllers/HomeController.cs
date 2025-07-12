@@ -99,7 +99,7 @@ public IActionResult CompararPalabra(string? PalabraUsuario)
     {
        ViewBag.VBFrase = "Perdiste";
      ViewBag.VBComoVa = palabraCorrectaMayus;
-     juego.contadorInt = juego.palabraSeleccionada.Length; 
+      
      ViewBag.VBPalabraSelect = palabraCorrectaMayus;
        
        

@@ -3,14 +3,14 @@
     <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EgHrk9mMo6IbMGeG5sYZ0e3/sSjqXRpsTNd5mMRtY2g="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"792"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022EgHrk9mMo6IbMGeG5sYZ0e3/sSjqXRpsTNd5mMRtY2g=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Jul 2025 15:09:35 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1Do/jd9V2QMyznT6aY141EFXpp2A\u002BsBILKbVJ\u002BWobXo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"994"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221Do/jd9V2QMyznT6aY141EFXpp2A\u002BsBILKbVJ\u002BWobXo=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Jul 2025 16:25:26 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/css/site.ish03xm5cw.css">
+    <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/css/site.wtmhlqhvac.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ish03xm5cw"},{"Name":"integrity","Value":"sha256-EgHrk9mMo6IbMGeG5sYZ0e3/sSjqXRpsTNd5mMRtY2g="},{"Name":"label","Value":"_content/TP04_Urquizo_Brasburg/css/site.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"792"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022EgHrk9mMo6IbMGeG5sYZ0e3/sSjqXRpsTNd5mMRtY2g=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Jul 2025 15:09:35 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wtmhlqhvac"},{"Name":"integrity","Value":"sha256-1Do/jd9V2QMyznT6aY141EFXpp2A\u002BsBILKbVJ\u002BWobXo="},{"Name":"label","Value":"_content/TP04_Urquizo_Brasburg/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"994"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221Do/jd9V2QMyznT6aY141EFXpp2A\u002BsBILKbVJ\u002BWobXo=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Jul 2025 16:25:26 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>
