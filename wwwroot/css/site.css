@@ -65,3 +65,18 @@ p{
   color: white;
   font-size: 20px;
 }
+.como{
+  display: flex; 
+  justify-content: center; 
+  gap: 10px;
+  
+}
+.va{
+  width: 40px;
+   height: 40px; 
+   border-bottom: 3px ;
+   
+   color: white; 
+   text-align: center; 
+   font-size: 30px;
+}

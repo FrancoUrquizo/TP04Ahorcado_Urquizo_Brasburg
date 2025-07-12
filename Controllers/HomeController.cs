@@ -48,10 +48,7 @@ public class HomeController : Controller
 
         Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
 
-        if (!juego.ListLetrasUsuario.Contains(letraMayus))
-        {
-            juego.ListLetrasUsuario.Add(letraMayus);
-        }
+       
 
         var comoVa = juego.MostarComoVa(letraMayus);
 
@@ -89,7 +86,7 @@ public IActionResult CompararPalabra(string? PalabraUsuario)
 
     Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
 
-    string palabraUsuarioMayus = PalabraUsuario.ToUpper();
+    string palabraUsuarioMayus = PalabraUsuario.Trim().ToUpper();
     string palabraCorrectaMayus = juego.palabraSeleccionada.ToUpper();
 
     if (palabraUsuarioMayus == palabraCorrectaMayus)
@@ -110,7 +107,7 @@ public IActionResult CompararPalabra(string? PalabraUsuario)
    
     ViewBag.Intentos = juego.contadorInt;
     ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
- ViewBag.VBPalabraSelect= juego.palabraSeleccionada;
+ ViewBag.VBPalabraSelect = palabraCorrectaMayus;
 
     HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
 

@@ -20,19 +20,22 @@ public class Juego
         palabraSeleccionada = posiblesPalabras[random.Next(posiblesPalabras.Count)].ToUpper(); 
         ultimoId++;
         DicPalabraJuego[ultimoId] = palabraSeleccionada;
-    }
+    } 
 
     public char[] MostarComoVa(char LetrasUsuario)
     {
         LetrasUsuario = char.ToUpper(LetrasUsuario); 
         char[] comoVa = Principio();
 
-        contadorInt++;
+      
 
         if (!ListLetrasUsuario.Contains(LetrasUsuario) && LetrasUsuario != ' ')
         {
             ListLetrasUsuario.Add(LetrasUsuario);
+           
+             contadorInt++;
         }
+       
 
         for (int i = 0; i < palabraSeleccionada.Length; i++)
         {

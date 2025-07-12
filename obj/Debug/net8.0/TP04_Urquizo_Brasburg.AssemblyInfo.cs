@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP04_Urquizo_Brasburg")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a050883b06cdb838f1ebc5d35b4080beeb8d2d54")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+503dfdcd5b133964ad2b723b004bb07dd8d6ed80")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP04_Urquizo_Brasburg")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP04_Urquizo_Brasburg")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
