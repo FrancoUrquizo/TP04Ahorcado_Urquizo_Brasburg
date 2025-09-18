@@ -9,44 +9,27 @@ public class Juego
 
     public int contadorInt { get; set; }
     public int ultimoId { get; private set; }
-    public List<string> posiblesPalabras = new List<string> { "auto", "vaso", "casa", "gatos", "mouse", "perro" };
+    public List<Palabra> posiblesPalabras = new List<Palabra>();
+    public Usuario UsuarioActual;
+    public List<Usuario> ListUsu = new List<Usuario>();
+
+
     public string palabraSeleccionada = "";
 
-    public void InicializarJuego()
+    public void InicializarJuego(string NombreUsuario, int dificultad)
     {
-        Random random = new Random();
+
         ListLetrasUsuario = new List<char>();
         contadorInt = 0;
-        palabraSeleccionada = posiblesPalabras[random.Next(posiblesPalabras.Count)].ToUpper(); 
+        palabraSeleccionada = CargarPalabra(dificultad).ToUpper();
         ultimoId++;
         DicPalabraJuego[ultimoId] = palabraSeleccionada;
-    } 
 
-    public char[] MostarComoVa(char LetrasUsuario)
-    {
-        LetrasUsuario = char.ToUpper(LetrasUsuario); 
-        char[] comoVa = Principio();
+UsuarioActual = new Usuario (NombreUsuario, contadorInt);
 
-      
-
-        if (!ListLetrasUsuario.Contains(LetrasUsuario) && LetrasUsuario != ' ')
-        {
-            ListLetrasUsuario.Add(LetrasUsuario);
-           
-             contadorInt++;
-        }
-       
-
-        for (int i = 0; i < palabraSeleccionada.Length; i++)
-        {
-            if (ListLetrasUsuario.Contains(palabraSeleccionada[i]))
-            {
-                comoVa[i] = palabraSeleccionada[i];
-            }
-        }
-
-        return comoVa;
     }
+
+   
 
     public char[] Principio()
     {
@@ -58,4 +41,86 @@ public class Juego
         }
         return comoVa;
     }
+
+    private void LlenarPalabras()
+    {
+        posiblesPalabras = new List<Palabra>
+        {
+            // Dificultad 1
+            new Palabra("gato", 1),
+            new Palabra("sol", 1),
+            new Palabra("mesa", 1),
+            new Palabra("luz", 1),
+            new Palabra("flor", 1),
+            new Palabra("pan", 1),
+            new Palabra("pez", 1),
+            new Palabra("libro", 1),
+            new Palabra("casa", 1),
+            new Palabra("perro", 1),
+            // Dificultad 2
+            new Palabra("ratón", 2),
+            new Palabra("planta", 2),
+            new Palabra("camisa", 2),
+            new Palabra("zapato", 2),
+            new Palabra("jardín", 2),
+            new Palabra("silla", 2),
+            new Palabra("escuela", 2),
+            new Palabra("amigo", 2),
+            new Palabra("estrella", 2),
+            new Palabra("pelota", 2),
+            // Dificultad 3
+            new Palabra("murciélago", 3),
+            new Palabra("elefante", 3),
+            new Palabra("computadora", 3),
+            new Palabra("carretera", 3),
+            new Palabra("mariposa", 3),
+            new Palabra("tormenta", 3),
+            new Palabra("cementerio", 3),
+            new Palabra("cuchara", 3),
+            new Palabra("pirámide", 3),
+            new Palabra("ventana", 3),
+            // Dificultad 4
+            new Palabra("hipopótamo", 4),
+            new Palabra("biblioteca", 4),
+            new Palabra("microondas", 4),
+            new Palabra("paralelepípedo", 4),
+            new Palabra("refrigerador", 4),
+            new Palabra("desoxirribonucleico", 4),
+            new Palabra("circunferencia", 4),
+            new Palabra("inconstitucional", 4),
+            new Palabra("otorrinolaringólogo", 4),
+            new Palabra("transustanciación", 4)
+        };
+    }
+
+
+    private string CargarPalabra(int dificultad)
+    {
+        Random random = new Random();
+        int numero = random.Next(1, 10);
+        string palabraDevolver;
+
+        foreach (Palabra p in posiblesPalabras)
+        {
+            if (p.Dificultad == dificultad)
+                palabraDevolver = posiblesPalabras[numero];
+
+        }
+
+        return palabraDevolver;
+    }
+
+    public void FinalizarJuego(int intentos)
+    {
+        UsuarioActual = new Usuario(NombreUsuario, intentos);
+        ListUsu.Add(UsuarioActual);
+    }
+
+    public List<Usuario> DevolverListaUsuarios()
+    {
+
+        ListUsu = ListUsu.OrderBy(UsuarioActual => UsuarioActual.intentos).ToList();
+        return ListUsu;
+    }
+
 }

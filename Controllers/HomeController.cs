@@ -18,24 +18,27 @@ public class HomeController : Controller
         Juego juego = new Juego();
         juego.InicializarJuego();
         ViewBag.VBIndex = Juego.DicPalabraJuego;
+        ViewBag.VBIndexJugadores = Juego.ListUsu;
         return View();
     }
 
-    public IActionResult IrAlJuego()
+[HttpPost]
+    public IActionResult IrAlJuego(string username, int dificultad)
     {
         Juego juego = new Juego();
-        juego.InicializarJuego();
+        juego.InicializarJuego(username, dificultad);
         ViewBag.VBJuego = Juego.DicPalabraJuego;
-        
+
         string juegoJson = Objeto.ObjectToString(juego);
         HttpContext.Session.SetString("Juego", juegoJson);
 
+        ViewBag.VBNombre = Usuario.nombre;
         ViewBag.VBComoVa = juego.Principio();
         ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
 
         return View("Juego");
     }
-
+// todo lo de aca abajo hay q hacerlo en java y borrarlo de aca
     public IActionResult CompararLetra(char letra)
     {
         char letraMayus = char.ToUpper(letra);
@@ -48,7 +51,7 @@ public class HomeController : Controller
 
         Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
 
-       
+
 
         var comoVa = juego.MostarComoVa(letraMayus);
 
@@ -56,7 +59,7 @@ public class HomeController : Controller
         ViewBag.VBComoVa = comoVa;
         ViewBag.Intentos = juego.contadorInt;
         ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
-       ViewBag.VBPalabraSelect= juego.palabraSeleccionada;
+        ViewBag.VBPalabraSelect = juego.palabraSeleccionada;
 
         if (comoVa != null && !comoVa.Contains('_'))
         {
@@ -68,49 +71,49 @@ public class HomeController : Controller
 
         return View("Juego");
     }
-public IActionResult CompararPalabra(string? PalabraUsuario)
-{
-   
-    if (string.IsNullOrEmpty(PalabraUsuario))
+    public IActionResult CompararPalabra(string? PalabraUsuario)
     {
-        ViewBag.VBFrase = "Perdiste";
-        ViewBag.Gano_Perdio = null;
+
+        if (string.IsNullOrEmpty(PalabraUsuario))
+        {
+            ViewBag.VBFrase = "Perdiste";
+            ViewBag.Gano_Perdio = null;
+            return View("Juego");
+        }
+
+        string? juegoJson = HttpContext.Session.GetString("Juego");
+        if (string.IsNullOrEmpty(juegoJson))
+        {
+            return RedirectToAction("Index");
+        }
+
+        Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+
+        string palabraUsuarioMayus = PalabraUsuario.Trim().ToUpper();
+        string palabraCorrectaMayus = juego.palabraSeleccionada.ToUpper();
+
+        if (palabraUsuarioMayus == palabraCorrectaMayus)
+        {
+            ViewBag.VBFrase = "Ganaste";
+            ViewBag.VBComoVa = palabraCorrectaMayus;
+
+        }
+        else
+        {
+            ViewBag.VBFrase = "Perdiste";
+            ViewBag.VBComoVa = palabraCorrectaMayus;
+
+            ViewBag.VBPalabraSelect = palabraCorrectaMayus;
+
+
+        }
+
+        ViewBag.Intentos = juego.contadorInt;
+        ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
+        ViewBag.VBPalabraSelect = palabraCorrectaMayus;
+
+        HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+
         return View("Juego");
     }
-
-    string? juegoJson = HttpContext.Session.GetString("Juego");
-    if (string.IsNullOrEmpty(juegoJson))
-    {
-        return RedirectToAction("Index");
-    }
-
-    Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
-
-    string palabraUsuarioMayus = PalabraUsuario.Trim().ToUpper();
-    string palabraCorrectaMayus = juego.palabraSeleccionada.ToUpper();
-
-    if (palabraUsuarioMayus == palabraCorrectaMayus)
-    {
-        ViewBag.VBFrase = "Ganaste";
-        ViewBag.VBComoVa = palabraCorrectaMayus;
-      
-    }
-    else
-    {
-       ViewBag.VBFrase = "Perdiste";
-     ViewBag.VBComoVa = palabraCorrectaMayus;
-      
-     ViewBag.VBPalabraSelect = palabraCorrectaMayus;
-       
-       
-    }
-   
-    ViewBag.Intentos = juego.contadorInt;
-    ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
- ViewBag.VBPalabraSelect = palabraCorrectaMayus;
-
-    HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
-
-    return View("Juego");
-}
 }
