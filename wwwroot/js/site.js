@@ -1,28 +1,98 @@
 ﻿//falta controllers
 
 // hay que pasar topdo esto a java 
-public char[] MostarComoVa(char LetrasUsuario)
-{
-    LetrasUsuario = char.ToUpper(LetrasUsuario);
-    char[] comoVa = Principio();
+
+function Juego(PalabraAdivinar) {
+    let palabraUser = document.getElementById('IdPalabra').value;
+    let letra = document.getElementById('IdLetra').value;
+    let ComoVa =  document.getElementById('IdComoVa').value;
+   
+   let GanoONO = false
+
+ CompararLetra(letra, PalabraAdivinar,ComoVa)
+
+ GanoONO = CompararPalabra( PalabraAdivinar,palabraUser)
+
+   
+    //document.getElementById('resultado').innerHTML =
+      
 
 
+  }
 
-    if (!ListLetrasUsuario.Contains(LetrasUsuario) && LetrasUsuario != ' ')
+  function CompararLetra(letra, PalabraAdivinar,ComoVa) 
+  {
+    for(let i = 0; i <= PalabraAdivinar.length; i++)
     {
-        ListLetrasUsuario.Add(LetrasUsuario);
-
-        contadorInt++;
-    }
-
-
-    for (int i = 0; i < palabraSeleccionada.Length; i++)
-    {
-        if (ListLetrasUsuario.Contains(palabraSeleccionada[i]))
+        if(PalabraAdivinar[i] == letra)
         {
-            comoVa[i] = palabraSeleccionada[i];
+            ComoVa[i] = letra
         }
     }
 
-    return comoVa;
-}
+    if(PalabraAdivinar == ComoVa)
+    {
+        esIgual = true
+        alert('Ganasteee :)')
+    }
+    document.getElementById('IdComoVa').innerHTML = ComoVa
+
+  }
+
+
+  function CompararPalabra(PalabraAdivinar,palabraUser) 
+  {
+    let esIgual = false
+    if(PalabraAdivinar == palabraUser)
+    {
+         esIgual = true
+         alert('Ganasteee :)' )
+    }
+    else {
+        alert('Perdiste :(')
+    }
+    return esIgual
+    
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

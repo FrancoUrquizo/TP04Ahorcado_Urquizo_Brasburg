@@ -10,73 +10,98 @@ html {
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
 }
 
-
-footer {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  color:black;
-}
-
-*{
-  background-color:darkblue;
-}
-header{
- text-align: left;
- color:white;
-}
-header a{
-  color: black;
-  border-radius: 60px;
-  background-color: white;
-}
-
-body{
-  text-align: center;
-  color: white;
-}
-.letra{
-border-radius: 10px;
-background-color: red;
-color: white;
-  }
-.palabra{
-   border-radius: 10px;
-   background-color:red;
-   color:white;
-}
-
-div a{
-  color: red
-}
-textarea{
-  background-color: white;
-  color:black;
+/* Caja contenedora */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background-color: #ffffff;
   border-radius: 10px;
-  font-size: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-p{
+/* Títulos */
+h1, h2, h3, h4 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Botones */
+button, input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  padding: 10px 18px;
+  margin: 5px 0;
   color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover, input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Inputs */
+input[type=text], select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Ranking */
+.ranking {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9fafc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.ranking h2 {
+  margin-bottom: 10px;
+}
+
+/* Como va */
+.como, .va {
+  text-align: center;
+  margin: 10px;
   font-size: 20px;
+  font-weight: bold;
+  color: #444;
+  letter-spacing: 3px;
 }
-.como{
-  display: flex; 
-  justify-content: center; 
-  gap: 10px;
-  
+
+/* Header y Footer */
+header, footer {
+  text-align: center;
+  margin: 15px 0;
 }
-.va{
-  width: 40px;
-   height: 40px; 
-   border-bottom: 3px ;
-   
-   color: white; 
-   text-align: center; 
-   font-size: 30px;
+
+header a, footer a {
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+header a:hover, footer a:hover {
+  color: #388e3c;
+}
+
+/* Imagen */
+img {
+  display: block;
+  margin: 15px auto;
+  max-width: 200px;
 }

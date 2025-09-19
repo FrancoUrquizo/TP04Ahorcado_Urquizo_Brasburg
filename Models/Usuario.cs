@@ -11,4 +11,10 @@ public class Usuario
 
 
     }
+
+
+    public void ActualizarIntentos(int intentos)
+    {
+        CantidadIntentos = intentos;
+    }
 }

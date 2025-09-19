@@ -4,15 +4,15 @@ using System.Linq;
 
 public class Juego
 {
-    public static Dictionary<int, string> DicPalabraJuego = new Dictionary<int, string>();
+    //poner lo de jasopnProperty
+   
     public List<char> ListLetrasUsuario = new List<char>();
 
     public int contadorInt { get; set; }
     public int ultimoId { get; private set; }
     public List<Palabra> posiblesPalabras = new List<Palabra>();
     public Usuario UsuarioActual;
-    public List<Usuario> ListUsu = new List<Usuario>();
-
+    public List<Usuario> ListUsu { get; set; } = new List<Usuario>();
 
     public string palabraSeleccionada = "";
 
@@ -23,13 +23,13 @@ public class Juego
         contadorInt = 0;
         palabraSeleccionada = CargarPalabra(dificultad).ToUpper();
         ultimoId++;
-        DicPalabraJuego[ultimoId] = palabraSeleccionada;
+       
 
-UsuarioActual = new Usuario (NombreUsuario, contadorInt);
+        UsuarioActual = new Usuario(NombreUsuario, contadorInt);
 
     }
 
-   
+
 
     public char[] Principio()
     {
@@ -94,16 +94,19 @@ UsuarioActual = new Usuario (NombreUsuario, contadorInt);
     }
 
 
-    private string CargarPalabra(int dificultad)
+    public string CargarPalabra(int dificultad)
     {
         Random random = new Random();
         int numero = random.Next(1, 10);
-        string palabraDevolver;
+        string palabraDevolver = "";
 
         foreach (Palabra p in posiblesPalabras)
         {
             if (p.Dificultad == dificultad)
-                palabraDevolver = posiblesPalabras[numero];
+            {
+                palabraDevolver = posiblesPalabras[numero].Texto;
+            }
+
 
         }
 
@@ -112,14 +115,14 @@ UsuarioActual = new Usuario (NombreUsuario, contadorInt);
 
     public void FinalizarJuego(int intentos)
     {
-        UsuarioActual = new Usuario(NombreUsuario, intentos);
+        UsuarioActual.ActualizarIntentos(intentos);
         ListUsu.Add(UsuarioActual);
     }
 
     public List<Usuario> DevolverListaUsuarios()
     {
 
-        ListUsu = ListUsu.OrderBy(UsuarioActual => UsuarioActual.intentos).ToList();
+        ListUsu = ListUsu.OrderBy(UsuarioActual => UsuarioActual.CantidadIntentos).ToList();
         return ListUsu;
     }
 

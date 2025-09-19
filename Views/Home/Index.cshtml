@@ -1,10 +1,45 @@
-﻿
+
 @{
     ViewData["Title"] = "Index";
 }
+
 <link rel="stylesheet" href="/css/site.css">
+
+
 <div>
-    <h1>Bienvenido Al super Ahorcado <h1>
-    <h2> Presione <a  href= '@Url.Action("IrAlJuego", "Home")' alt = "Ir al ">  acá</a></h2>
     
+  <h3>Danos informacion tuya</h3>
+        
+        <form Action='@Url.Action("IrAlJuego", "Home")' method = "POST">
+    <p>
+    
+    
+         <input id="IdNombreUsu" type="text" >
+      
+        <select id="Iddificultad" name="dificultad" required>
+            <option value=""> Elegí una de estas 4 dificultades </option>
+            <option value="1">Fácil</option>
+            <option value="1">Medio</option>
+            <option value="1">Difícil</option>
+                <option value="1">Muy difícil</option>
+            </select>
+            <input type="submit" >
+           
+    </p>
+ </form>
+ <div class = "ranking">
+@if (ViewBag.VBListJugadores != null && ViewBag.VBListJugadores.Count > 0)
+{
+    <h2>Ranking</h2>
+    @for (int i = 0; i < ViewBag.VBListJugadores.Count; i++)
+    {
+        <h4>@ViewBag.VBListJugadores[i].nombre</h4>
+        <p>@ViewBag.VBListJugadores[i].CantidadIntentos</p>
+    }
+}
+else
+{
+    <p>No hay jugadores aún.</p>
+}
+</div>
 </div>

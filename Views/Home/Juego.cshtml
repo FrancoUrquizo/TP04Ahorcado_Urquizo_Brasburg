@@ -9,12 +9,17 @@
 </header>
 
 <body>
+
+
+<h4> Intentos:</h4> 
+<h4> @ViewBag.VBIntentos  </h4>
+
   @if (ViewBag.VBComoVa != null)
   {
    <div class="como" >
     @for (int i = 0; i < ViewBag.VBComoVa.Length; i++)
     {
-        <div class="va" >
+        <div class="va" id="IdComoVA">
             @ViewBag.VBComoVa[i]
         </div>
     }
@@ -22,97 +27,81 @@
   }
 
 
-
-  <h2> Lista de letras</h2>
-  @if (ViewBag.VBFrase == null)
-  {
+  <form method = "POST" Action='@Url.Action("IrAlJuego", "Home")'>
+      <p>
+    Ponga una letra 
+          <input id="IdLetra" type="text" >
+          <input type="hidden" id="Intentos"  name="Intentos" value="0">
     
-      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
-      {
-      <p>
-       @ViewBag.ListLetrasUsuario[i]
-       </p> 
-
-     }
-  @if (ViewBag.ListaLetrasUsuario != null)
-     {
-  
-      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
-      {
-      <p>
-       @ViewBag.ListLetrasUsuario[i]
-       </p>
-      }
-  
-     }
-  }
-
-   @if (ViewBag.VBFrase == "Ganaste" || ViewBag.VBFrase == "Perdiste")
-  {
-    @if (ViewBag.ListLetrasUsuario != null)
-    {
-      @for(int i = 0; i < ViewBag.ListLetrasUsuario.Count ;i++)
-      {
-       <p>
-         @ViewBag.ListLetrasUsuario[i]
-        </p>
-      }
-    }
-  }
-  
-
-
-
-  <h3> cantidad de jugadas
-    @if (ViewBag.VBFrase != null)
-    {
-      @ViewBag.Intentos 
-    }
-    else
-    {
-      @ViewBag.Intentos
-    }
-  </h3>
-
-
-
-  @if(ViewBag.VBFrase == null)
-  {
-    <form  method= "post" action = '@Url.Action("CompararLetra", "Home")'>
-     <p >
-       Letra jugar 
-       <textarea name="Letra" id="Idletra" rows="1" cols="10">
-       </textarea>
-       <input class="letra" type="submit" value=" Arriesgar Letra" >
       </p>
-    </form>
-  }
+          <button onclick= "Juego(@ViewBag.PalabraElejida)">Arriesgar letra</button>
+    
+  </form>
 
-  @if(ViewBag.VBFrase == null)
-   {
-    <form  method= "Post" action = '@Url.Action("CompararPalabra", "Home")'>
-      <p >
-       Palabra a Arriesgar: 
-       <textarea name="PalabraUsuario" id="IdPalabra" rows="1" cols="10"> </textarea>
-       <input class="palabra" type="submit" value=" Arriesgar Palabra">
-      </p>
-    </form>
-  }
+  <form method = "POST" Action='@Url.Action("IrAlJuego", "Home")'>
+      <p>
+    Ponga una Palabra
+          <input id="IdPalabra" type="text" >
+          <input type="hidden" id="Intentos"  name="Intentos" value="0">
+      
 
-  @if(ViewBag.VBFrase != null)
-  {
-   <h2> @ViewBag.VBFrase</h2>
+          <button onclick = "Juego(@ViewBag.PalabraElejida)">Arriesgar Palabra</button>
+    
+  </form>
 
-   @if (ViewBag.VBFrase == "Ganaste")
-    {
-        <img src="~/giphy.gif" alt="Gif">
-    }
-   else if (ViewBag.VBFrase == "Perdiste")
-    {
-      <h2> La palabra era: @ViewBag.VBPalabraSelect</h2>
-      <img src="~/gIFPERIDO.gif" alt="Gif">
-    }
 
-   }
+  <a  href= '@Url.Action("Index", "Home")' alt = "Ir al "> FIN </a>
+
+    
+
 </body>
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
