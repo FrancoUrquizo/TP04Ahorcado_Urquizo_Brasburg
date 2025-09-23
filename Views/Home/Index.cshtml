@@ -6,15 +6,16 @@
 <link rel="stylesheet" href="/css/site.css">
 
 
-<div>
-    
+<div class ="container">
+     <img src="~/Logo.png" alt="Logo">
+
   <h3>Danos informacion tuya</h3>
         
         <form Action='@Url.Action("IrAlJuego", "Home")' method = "POST">
     <p>
     
     
-         <input id="IdNombreUsu" type="text" >
+         <input id="IdNombreUsu" type="text" placeholder="Nombre">
       
         <select id="Iddificultad" name="dificultad" required>
             <option value=""> Elegí una de estas 4 dificultades </option>

@@ -1,13 +1,20 @@
-﻿//falta controllers
-
-// hay que pasar topdo esto a java 
-
-function Juego(PalabraAdivinar) {
+﻿
+function Juego(PalabraAdivinar, letra) {
     let palabraUser = document.getElementById('IdPalabra').value;
     let letra = document.getElementById('IdLetra').value;
     let ComoVa =  document.getElementById('IdComoVa').value;
    
    let GanoONO = false
+
+   let resultado = "";
+    for (let letra of palabra) {
+        if (letrasAdivinadas.includes(letra)) {
+            resultado += letra + " ";
+        } else {
+            resultado += "_ ";
+        }
+    }
+    document.getElementById("palabraSecreta").innerText = resultado.trim();
 
  CompararLetra(letra, PalabraAdivinar,ComoVa)
 
@@ -15,10 +22,9 @@ function Juego(PalabraAdivinar) {
 
    
     //document.getElementById('resultado').innerHTML =
-      
-
-
+    
   }
+
 
   function CompararLetra(letra, PalabraAdivinar,ComoVa) 
   {

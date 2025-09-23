@@ -21,24 +21,33 @@ public class HomeController : Controller
         ViewBag.VBIndexJugadores = juego.ListUsu;
 HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
        
-        return View("Index");
+        return View("Layout");
 
     }
+
+
+public IActionResult irAPagPrinc(){
+
+  return View("Index");
+}
 
 [HttpPost]
     public IActionResult IrAlJuego(string username, int dificultad)
     {
         string? juegoJson = HttpContext.Session.GetString("Juego");
         Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
-      
-        juego.InicializarJuego(username, dificultad);
-   
+         juego.InicializarJuego(username, dificultad);
+  
+         ViewBag.PalabraElejida = juego.CargarPalabra(dificultad);
+          
+             ViewBag.VBComoVa = juego.Principio();
+           
+
+           ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
 ViewBag.VBListJugadores = juego.ListUsu ?? new List<Usuario>();
-        ViewBag.VBNombre = juego.UsuarioActual.nombre;
-        ViewBag.VBComoVa = juego.Principio();
-        ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
-        ViewBag.PalabraElejida = juego.CargarPalabra(dificultad);
-ViewBag.VBIntentos = Usuario.CantidadIntentos;
+        ViewBag.VBNombre = juego.UsuarioActual.nombre;       
+ViewBag.VBIntentos =   juego.UsuarioActual.CantidadIntentos;
+
  HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
 
         return View("Juego");

@@ -39,7 +39,9 @@ public class Juego
         {
             comoVa[i] = '_';
         }
+        
         return comoVa;
+        Console.WriteLine(palabraSeleccionada);
     }
 
     private void LlenarPalabras()

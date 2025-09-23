@@ -4,27 +4,32 @@
 }
 <link rel="stylesheet" href="/css/site.css">
 <header>
- <a  href= '@Url.Action("Index", "Home")' alt = "Ir al "> Home </a>
+ <a  href= '@Url.Action("irAPagPrinc", "Home")' alt = "Ir al "> Home </a>
 
 </header>
 
 <body>
 
-
+<div class= "container">
 <h4> Intentos:</h4> 
 <h4> @ViewBag.VBIntentos  </h4>
 
-  @if (ViewBag.VBComoVa != null)
-  {
-   <div class="como" >
-    @for (int i = 0; i < ViewBag.VBComoVa.Length; i++)
-    {
-        <div class="va" id="IdComoVA">
-            @ViewBag.VBComoVa[i]
-        </div>
-    }
-</div>
-  }
+ @{
+    char[] comoVa = (char[])ViewBag.VBComoVa;
+}
+
+@if (comoVa != null)
+{
+    <div class="como">
+        @for (int i = 0; i < comoVa.Length; i++)
+        {
+            <span class="letra">@comoVa[i]</span>
+        }
+    </div>
+}
+else{
+    <h4> no hay palabra cargada </h4>
+}
 
 
   <form method = "POST" Action='@Url.Action("IrAlJuego", "Home")'>
@@ -50,10 +55,10 @@
   </form>
 
 
-  <a  href= '@Url.Action("Index", "Home")' alt = "Ir al "> FIN </a>
+  <a  href= '@Url.Action("irAPagPrinc", "Home")' alt = "Ir al "> FIN </a>
 
-    
-
+    </div>
+<script src="site.js"></script>
 </body>
 
 
