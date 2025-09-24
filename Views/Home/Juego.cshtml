@@ -1,112 +1,46 @@
-
 @{
     ViewData["Title"] = "Juego";
 }
 <link rel="stylesheet" href="/css/site.css">
 <header>
- <a  href= '@Url.Action("irAPagPrinc", "Home")' alt = "Ir al "> Home </a>
-
+ <a href='@Url.Action("irAPagPrinc", "Home")' alt="Ir al"> Home </a>
 </header>
 
 <body>
+<div class="container">
+    <h4> Intentos: @ViewBag.VBIntentos</h4> 
 
-<div class= "container">
-<h4> Intentos:</h4> 
-<h4> @ViewBag.VBIntentos  </h4>
+    <h4> Palabra a adivinar:</h4>
 
- @{
-    char[] comoVa = (char[])ViewBag.VBComoVa;
-}
+    <h4 id="IdComoVa">@(
+        ViewBag.VBComoVa != null ? string.Join("", (char[])ViewBag.VBComoVa) : ""
+    )</h4>
 
-@if (comoVa != null)
-{
-    <div class="como">
-        @for (int i = 0; i < comoVa.Length; i++)
-        {
-            <span class="letra">@comoVa[i]</span>
-        }
-    </div>
-}
-else{
-    <h4> no hay palabra cargada </h4>
-}
+    <h4> Letras usadas: </h4>
+    <h4 id="letrasUsadas"></h4>
 
+    <!-- primer formulario: letra (botón NO hace submit) -->
+    <form method="POST" action='@Url.Action("IrAlJuego", "Home")'>
+        <p>
+            Ponga una letra
+            <input id="IdLetra" name="letra" type="text" />
+            <input type="hidden" id="Intentos" name="Intentos" value="0" />
+        </p>
+        <button type="button" onclick="Juego('@(ViewBag.PalabraElejida ?? "")')">Arriesgar letra</button>
+    </form>
 
-  <form method = "POST" Action='@Url.Action("IrAlJuego", "Home")'>
-      <p>
-    Ponga una letra 
-          <input id="IdLetra" type="text" >
-          <input type="hidden" id="Intentos"  name="Intentos" value="0">
-    
-      </p>
-          <button onclick= "Juego(@ViewBag.PalabraElejida)">Arriesgar letra</button>
-    
-  </form>
+    <!-- segundo formulario: palabra completa (botón NO hace submit) -->
+    <form method="POST" action='@Url.Action("IrAlJuego", "Home")'>
+        <p>
+            Ponga una Palabra
+            <input id="IdPalabra" name="palabra" type="text" />
+            <input type="hidden" id="Intentos2" name="Intentos" value="0" />
+        </p>
+        <button type="button" onclick="Juego('@(ViewBag.PalabraElejida ?? "")')">Arriesgar Palabra</button>
+    </form>
 
-  <form method = "POST" Action='@Url.Action("IrAlJuego", "Home")'>
-      <p>
-    Ponga una Palabra
-          <input id="IdPalabra" type="text" >
-          <input type="hidden" id="Intentos"  name="Intentos" value="0">
-      
+    <a href='@Url.Action("irAPagPrinc", "Home")'>FIN</a>
+</div>
 
-          <button onclick = "Juego(@ViewBag.PalabraElejida)">Arriesgar Palabra</button>
-    
-  </form>
-
-
-  <a  href= '@Url.Action("irAPagPrinc", "Home")' alt = "Ir al "> FIN </a>
-
-    </div>
 <script src="site.js"></script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

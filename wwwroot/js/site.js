@@ -1,51 +1,70 @@
 ﻿
-function Juego(PalabraAdivinar, letra) {
-    let palabraUser = document.getElementById('IdPalabra').value;
-    let letra = document.getElementById('IdLetra').value;
-    let ComoVa =  document.getElementById('IdComoVa').value;
-   
+function Juego(PPalabraAdivinar) {
+ const palabraUser = document.getElementById('IdPalabra')?.value || "";
+    const letra = (document.getElementById('IdLetra')?.value || "").trim();
+    const ComoVa = document.getElementById('IdComoVa'); 
+
    let GanoONO = false
 
-   let resultado = "";
-    for (let letra of palabra) {
-        if (letrasAdivinadas.includes(letra)) {
-            resultado += letra + " ";
-        } else {
-            resultado += "_ ";
+
+let PalabraAdivinar = (PPalabraAdivinar !== undefined && PPalabraAdivinar !== null)
+        ? String(PPalabraAdivinar) : "";
+
+    if (ComoVa && PalabraAdivinar) {
+        const cur = (ComoVa.textContent || "").trim();
+        if (!cur || cur.length !== PalabraAdivinar.length) {
+            ComoVa.textContent = '_'.repeat(PalabraAdivinar.length);
         }
     }
-    document.getElementById("palabraSecreta").innerText = resultado.trim();
 
- CompararLetra(letra, PalabraAdivinar,ComoVa)
+   let resultado = "";
 
- GanoONO = CompararPalabra( PalabraAdivinar,palabraUser)
+
+ const letrasUsadasElem = document.getElementById('letrasUsadas');
+    let LetrasUsadas = (letrasUsadasElem?.textContent || "").trim();
+
+    if (letra) {
+        CompararLetra(letra, PalabraAdivinar, ComoVa);
+        LetrasUsadas = (LetrasUsadas ? LetrasUsadas + " " : "") + letra.toUpperCase() + ",";
+        if (letrasUsadasElem) letrasUsadasElem.textContent = LetrasUsadas;
+        const li = document.getElementById('IdLetra');
+      
+    }
+
+    if (palabraUser) {
+        CompararPalabra(PalabraAdivinar, palabraUser);
+        const pi = document.getElementById('IdPalabra');
+      
+    }
+
+    //document.getElementById('resultado').innerHTML =
+    document.getElementById('letrasUsadas').innerHTML = LetrasUsadas;
+  }
+
+
+ function CompararLetra(letra, PalabraAdivinar, comoVa) 
+{
+    if (!comoVa || !PalabraAdivinar || !letra) return false;
+
+    let comoVaArr = (comoVa.textContent || "").split('');
+    if (comoVaArr.length !== PalabraAdivinar.length) {
+        comoVaArr = Array.from('_'.repeat(PalabraAdivinar.length));
+    }
+
+    for (let i = 0; i < PalabraAdivinar.length; i++)
+    {
+        if (PalabraAdivinar[i].toUpperCase() === letra.toUpperCase())
+        {
+            comoVaArr[i] = PalabraAdivinar[i].toUpperCase();
+        }
+    }
+
+    const nuevoComoVa = comoVaArr.join('');
+    comoVa.textContent = nuevoComoVa;
 
    
-    //document.getElementById('resultado').innerHTML =
-    
-  }
 
-
-  function CompararLetra(letra, PalabraAdivinar,ComoVa) 
-  {
-    for(let i = 0; i <= PalabraAdivinar.length; i++)
-    {
-        if(PalabraAdivinar[i] == letra)
-        {
-            ComoVa[i] = letra
-        }
-    }
-
-    if(PalabraAdivinar == ComoVa)
-    {
-        esIgual = true
-        alert('Ganasteee :)')
-    }
-    document.getElementById('IdComoVa').innerHTML = ComoVa
-
-  }
-
-
+}
   function CompararPalabra(PalabraAdivinar,palabraUser) 
   {
     let esIgual = false
@@ -53,6 +72,7 @@ function Juego(PalabraAdivinar, letra) {
     {
          esIgual = true
          alert('Ganasteee :)' )
+     
     }
     else {
         alert('Perdiste :(')

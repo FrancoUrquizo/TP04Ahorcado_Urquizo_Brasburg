@@ -31,27 +31,28 @@ public IActionResult irAPagPrinc(){
   return View("Index");
 }
 
+
 [HttpPost]
-    public IActionResult IrAlJuego(string username, int dificultad)
-    {
-        string? juegoJson = HttpContext.Session.GetString("Juego");
-        Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
-         juego.InicializarJuego(username, dificultad);
+public IActionResult IrAlJuego(string username, int dificultad)
+{
+    string? juegoJson = HttpContext.Session.GetString("Juego");
+    Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+    juego.InicializarJuego(username, dificultad);
+
+    // usar la palabra ya seleccionada en InicializarJuego
+    ViewBag.PalabraElejida = juego.palabraSeleccionada;
+    ViewBag.VBComoVa = juego.Principio();
+
+    ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
   
-         ViewBag.PalabraElejida = juego.CargarPalabra(dificultad);
-          
-             ViewBag.VBComoVa = juego.Principio();
-           
+    ViewBag.VBNombre = juego.UsuarioActual.nombre;
+    ViewBag.VBIntentos = juego.UsuarioActual.CantidadIntentos;
 
-           ViewBag.ListLetrasUsuario = juego.ListLetrasUsuario;
-ViewBag.VBListJugadores = juego.ListUsu ?? new List<Usuario>();
-        ViewBag.VBNombre = juego.UsuarioActual.nombre;       
-ViewBag.VBIntentos =   juego.UsuarioActual.CantidadIntentos;
+    HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
 
- HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+    return View("Juego");
+}
 
-        return View("Juego");
-    }
 
 [HttpPost]
 

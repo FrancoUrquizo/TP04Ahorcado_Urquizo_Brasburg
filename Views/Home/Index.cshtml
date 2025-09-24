@@ -10,32 +10,32 @@
      <img src="~/Logo.png" alt="Logo">
 
   <h3>Danos informacion tuya</h3>
-        
+
         <form Action='@Url.Action("IrAlJuego", "Home")' method = "POST">
     <p>
     
     
-         <input id="IdNombreUsu" type="text" placeholder="Nombre">
+        <input id="IdNombreUsu" name="username" type="text" placeholder="Nombre">
       
         <select id="Iddificultad" name="dificultad" required>
             <option value=""> Elegí una de estas 4 dificultades </option>
             <option value="1">Fácil</option>
-            <option value="1">Medio</option>
-            <option value="1">Difícil</option>
-                <option value="1">Muy difícil</option>
-            </select>
+            <option value="2">Medio</option>
+            <option value="3">Difícil</option>
+            <option value="4">Muy difícil</option>
+        </select>
             <input type="submit" >
            
     </p>
  </form>
  <div class = "ranking">
-@if (ViewBag.VBListJugadores != null && ViewBag.VBListJugadores.Count > 0)
+@if (ViewBag.VBListJugadores != null && ViewBag.VBIndexJugadores.Count > 0)
 {
     <h2>Ranking</h2>
-    @for (int i = 0; i < ViewBag.VBListJugadores.Count; i++)
+    @for (int i = 0; i <= ViewBag.VBIndexJugadores.Count; i++)
     {
-        <h4>@ViewBag.VBListJugadores[i].nombre</h4>
-        <p>@ViewBag.VBListJugadores[i].CantidadIntentos</p>
+        <h4>@ViewBag.VBIndexJugadores[i].nombre</h4>
+        <p>@ViewBag.VBIndexJugadores[i].CantidadIntentos</p>
     }
 }
 else

@@ -15,18 +15,19 @@ public class Juego
     public List<Usuario> ListUsu { get; set; } = new List<Usuario>();
 
     public string palabraSeleccionada = "";
+    private static readonly Random rng = new Random();
 
     public void InicializarJuego(string NombreUsuario, int dificultad)
     {
-
+        LlenarPalabras();
         ListLetrasUsuario = new List<char>();
         contadorInt = 0;
-        palabraSeleccionada = CargarPalabra(dificultad).ToUpper();
+
+        palabraSeleccionada = CargarPalabra(dificultad)?.ToUpper() ?? "";
+
+    
         ultimoId++;
-       
-
         UsuarioActual = new Usuario(NombreUsuario, contadorInt);
-
     }
 
 
@@ -41,7 +42,7 @@ public class Juego
         }
         
         return comoVa;
-        Console.WriteLine(palabraSeleccionada);
+        
     }
 
     private void LlenarPalabras()
@@ -96,23 +97,13 @@ public class Juego
     }
 
 
-    public string CargarPalabra(int dificultad)
+      public string CargarPalabra(int dificultad)
     {
-        Random random = new Random();
-        int numero = random.Next(1, 10);
-        string palabraDevolver = "";
+        var candidatos = posiblesPalabras.Where(p => p.Dificultad == dificultad).ToList();
+        if (candidatos.Count == 0) return string.Empty;
 
-        foreach (Palabra p in posiblesPalabras)
-        {
-            if (p.Dificultad == dificultad)
-            {
-                palabraDevolver = posiblesPalabras[numero].Texto;
-            }
-
-
-        }
-
-        return palabraDevolver;
+        int idx = rng.Next(0, candidatos.Count);
+        return candidatos[idx].Texto;
     }
 
     public void FinalizarJuego(int intentos)
