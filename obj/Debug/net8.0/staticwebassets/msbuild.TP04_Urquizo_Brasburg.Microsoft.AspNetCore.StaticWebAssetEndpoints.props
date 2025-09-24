@@ -48,17 +48,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vadqiuskj5"},{"Name":"integrity","Value":"sha256-1w95BXhzaER72OVjc7Uo7vm2RpybqV6bXCOS9/ViU1I="},{"Name":"label","Value":"_content/TP04_Urquizo_Brasburg/giphy.gif"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"178919"},{"Name":"Content-Type","Value":"image/gif"},{"Name":"ETag","Value":"\u00221w95BXhzaER72OVjc7Uo7vm2RpybqV6bXCOS9/ViU1I=\u0022"},{"Name":"Last-Modified","Value":"Wed, 24 Sep 2025 14:59:03 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/js/site.a4preni7wg.js">
+    <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/js/site.g25h8ra9g4.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"a4preni7wg"},{"Name":"integrity","Value":"sha256-Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw="},{"Name":"label","Value":"_content/TP04_Urquizo_Brasburg/js/site.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4261"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw=\u0022"},{"Name":"Last-Modified","Value":"Wed, 24 Sep 2025 18:32:37 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"g25h8ra9g4"},{"Name":"integrity","Value":"sha256-GJig/Gu\u002Bgir7ic\u002B7jwA9RyidT2unXyLptn7i0RTlUHI="},{"Name":"label","Value":"_content/TP04_Urquizo_Brasburg/js/site.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4306"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022GJig/Gu\u002Bgir7ic\u002B7jwA9RyidT2unXyLptn7i0RTlUHI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 24 Sep 2025 21:42:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4261"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw=\u0022"},{"Name":"Last-Modified","Value":"Wed, 24 Sep 2025 18:32:37 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-GJig/Gu\u002Bgir7ic\u002B7jwA9RyidT2unXyLptn7i0RTlUHI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4306"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022GJig/Gu\u002Bgir7ic\u002B7jwA9RyidT2unXyLptn7i0RTlUHI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 24 Sep 2025 21:42:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TP04_Urquizo_Brasburg/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.47otxtyo56.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'))</AssetFile>

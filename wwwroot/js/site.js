@@ -46,7 +46,7 @@
         const igual = CompararPalabra(PalabraAdivinar, palabraUser);
         if (igual) {
            
-          
+            ComoVa.innerHTML = PalabraAdivinar;
              ocultarFormularios();
              document.getElementById('mensajeFinal').style.display = 'block';
         }
@@ -92,6 +92,8 @@ function CompararPalabra(PalabraAdivinar, palabraUser) {
         esIgual = true;
         var intentosMostrados = intentosVisual ? intentosVisual.textContent : (inputIntentos ? inputIntentos.value : "0");
         alert("Ganaste con " + intentosMostrados + " intentos, la Palabra era " + PalabraAdivinar.toLowerCase());
+      
+
     } else {
         IncrementarIntentos();
         alert('Perdiste, la palabra era ' + PalabraAdivinar);

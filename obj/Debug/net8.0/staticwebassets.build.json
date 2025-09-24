@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d3tEpOKM8b7LVYUBnFbas4WDJ4f2R2xe6Az/tDeyU3Q=",
+  "Hash": "KQThFtD9EV20+UdyFNP9uFkvBUFpTnqBfzSTZ8rH2jw=",
   "Source": "TP04_Urquizo_Brasburg",
   "BasePath": "_content/TP04_Urquizo_Brasburg",
   "Mode": "Default",
@@ -115,8 +115,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "a4preni7wg",
-      "Integrity": "Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw=",
+      "Fingerprint": "g25h8ra9g4",
+      "Integrity": "GJig/Gu+gir7ic+7jwA9RyidT2unXyLptn7i0RTlUHI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
@@ -725,7 +725,7 @@
       ]
     },
     {
-      "Route": "js/site.a4preni7wg.js",
+      "Route": "js/site.g25h8ra9g4.js",
       "AssetFile": "/Users/francourquizo/Documents/TP04Ahorcado_Urquizo_Brasburg/wwwroot/js/site.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -735,7 +735,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4261"
+          "Value": "4306"
         },
         {
           "Name": "Content-Type",
@@ -743,11 +743,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw=\""
+          "Value": "\"GJig/Gu+gir7ic+7jwA9RyidT2unXyLptn7i0RTlUHI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 24 Sep 2025 18:32:37 GMT"
+          "Value": "Wed, 24 Sep 2025 21:42:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -757,7 +757,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "a4preni7wg"
+          "Value": "g25h8ra9g4"
         },
         {
           "Name": "label",
@@ -765,7 +765,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw="
+          "Value": "sha256-GJig/Gu+gir7ic+7jwA9RyidT2unXyLptn7i0RTlUHI="
         }
       ]
     },
@@ -780,7 +780,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4261"
+          "Value": "4306"
         },
         {
           "Name": "Content-Type",
@@ -788,11 +788,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw=\""
+          "Value": "\"GJig/Gu+gir7ic+7jwA9RyidT2unXyLptn7i0RTlUHI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 24 Sep 2025 18:32:37 GMT"
+          "Value": "Wed, 24 Sep 2025 21:42:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -802,7 +802,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Ft4d6xr9VjjxTWXlbXCL1k0BomhufbvnrzHUzSJJjRw="
+          "Value": "sha256-GJig/Gu+gir7ic+7jwA9RyidT2unXyLptn7i0RTlUHI="
         }
       ]
     },
