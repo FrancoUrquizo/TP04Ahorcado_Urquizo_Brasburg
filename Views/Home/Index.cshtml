@@ -28,19 +28,28 @@
            
     </p>
  </form>
- <div class = "ranking">
-@if (ViewBag.VBListJugadores != null && ViewBag.VBIndexJugadores.Count > 0)
-{
-    <h2>Ranking</h2>
-    @for (int i = 0; i <= ViewBag.VBIndexJugadores.Count; i++)
+ <div class="ranking">
+    @if (ViewBag.VBIndexJugadores != null && ViewBag.VBIndexJugadores.Count > 0)
     {
-        <h4>@ViewBag.VBIndexJugadores[i].nombre</h4>
-        <p>@ViewBag.VBIndexJugadores[i].CantidadIntentos</p>
+        <h2>Ranking</h2>
+      
+            @foreach (var jugador in ViewBag.VBIndexJugadores)
+                {
+                    <ul>
+                        
+                        <li>@jugador.nombre</li>
+                        <li>@jugador.CantidadIntentos</li>
+                    </ul>
+                   
+                }
+            }
+         
+        
+      
+      
+    else
+    {
+        <p>No hay jugadores aún.</p>
     }
-}
-else
-{
-    <p>No hay jugadores aún.</p>
-}
 </div>
 </div>

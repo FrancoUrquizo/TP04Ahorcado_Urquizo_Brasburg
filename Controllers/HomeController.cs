@@ -15,11 +15,19 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        Juego juego = new Juego();
-        
-       
-        ViewBag.VBIndexJugadores = juego.ListUsu;
-HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+          string? juegoJson = HttpContext.Session.GetString("Juego");
+            Juego juego;
+            if (string.IsNullOrEmpty(juegoJson))
+            {
+                juego = new Juego();
+                HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+            }
+            else
+            {
+                juego = Objeto.StringToObject<Juego>(juegoJson!);
+            }
+
+            ViewBag.VBIndexJugadores = juego.ListUsu;
        
         return View("Layout");
 
@@ -39,7 +47,7 @@ public IActionResult IrAlJuego(string username, int dificultad)
     Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
     juego.InicializarJuego(username, dificultad);
 
-    // usar la palabra ya seleccionada en InicializarJuego
+  
     ViewBag.PalabraElejida = juego.palabraSeleccionada;
     ViewBag.VBComoVa = juego.Principio();
 
@@ -59,30 +67,19 @@ public IActionResult IrAlJuego(string username, int dificultad)
 public IActionResult FinJuego(int intentos)
 {
     string? juegoJson = HttpContext.Session.GetString("Juego");
-    Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+            if (string.IsNullOrEmpty(juegoJson)) return RedirectToAction("Index");
 
-     ViewBag.VBIntentos = juego.UsuarioActual.CantidadIntentos;
-juego.FinalizarJuego(intentos);
+            Juego juego = Objeto.StringToObject<Juego>(juegoJson!);
+            juego.FinalizarJuego(intentos);
+
+        
+            HttpContext.Session.SetString("Juego", Objeto.ObjectToString(juego));
+
+            ViewBag.VBIndexJugadores = juego.ListUsu.OrderBy(u => u.CantidadIntentos).ToList();
+            ViewBag.VBIntentos = juego.UsuarioActual?.CantidadIntentos ?? 0;
 
     return View("Index");
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

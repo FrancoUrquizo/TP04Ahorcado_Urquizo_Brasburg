@@ -1,13 +1,10 @@
-﻿
-function Juego(PPalabraAdivinar) {
- const palabraUser = document.getElementById('IdPalabra')?.value || "";
+﻿function Juego(PPalabraAdivinar) {
+    const palabraUser = document.getElementById('IdPalabra')?.value || "";
     const letra = (document.getElementById('IdLetra')?.value || "").trim();
-    const ComoVa = document.getElementById('IdComoVa'); 
+    const ComoVa = document.getElementById('IdComoVa');
+    const intentosVisual = document.getElementById('intentosVisual');
 
-   let GanoONO = false
-
-
-let PalabraAdivinar = (PPalabraAdivinar !== undefined && PPalabraAdivinar !== null)
+    let PalabraAdivinar = (PPalabraAdivinar !== undefined && PPalabraAdivinar !== null)
         ? String(PPalabraAdivinar) : "";
 
     if (ComoVa && PalabraAdivinar) {
@@ -17,32 +14,51 @@ let PalabraAdivinar = (PPalabraAdivinar !== undefined && PPalabraAdivinar !== nu
         }
     }
 
-   let resultado = "";
-
-
- const letrasUsadasElem = document.getElementById('letrasUsadas');
+    const letrasUsadasElem = document.getElementById('letrasUsadas');
     let LetrasUsadas = (letrasUsadasElem?.textContent || "").trim();
+    let letrasArray = LetrasUsadas.split(',').map(l => l.trim().toUpperCase()).filter(l => l);
 
     if (letra) {
-        CompararLetra(letra, PalabraAdivinar, ComoVa);
-        LetrasUsadas = (LetrasUsadas ? LetrasUsadas + " " : "") + letra.toUpperCase() + ",";
-        if (letrasUsadasElem) letrasUsadasElem.textContent = LetrasUsadas;
-        const li = document.getElementById('IdLetra');
-      
+        let letraMayus = letra.toUpperCase().trim();
+
+        if (letrasArray.includes(letraMayus)) {
+            alert("Ya usaste esa letra!");
+        } else {
+            const acierto = CompararLetra(letra, PalabraAdivinar, ComoVa);
+            LetrasUsadas = (LetrasUsadas ? LetrasUsadas + " " : "") + letraMayus + ",";
+            if (letrasUsadasElem) letrasUsadasElem.textContent = LetrasUsadas;
+            if (!acierto) {
+                IncrementarIntentos();
+            }
+        }
     }
 
+ 
+    if (ComoVa && !ComoVa.textContent.includes("_")) {
+        alert("Ganastee  con " + intentosVisual.textContent + " intentos, la Palabra era " + PalabraAdivinar.toLowerCase());
+        
+         ocultarFormularios();
+         document.getElementById('mensajeFinal').style.display = 'block';
+    }
+
+  
     if (palabraUser) {
-        CompararPalabra(PalabraAdivinar, palabraUser);
-        const pi = document.getElementById('IdPalabra');
-      
+        const igual = CompararPalabra(PalabraAdivinar, palabraUser);
+        if (igual) {
+           
+          
+             ocultarFormularios();
+             document.getElementById('mensajeFinal').style.display = 'block';
+        }
+        else {
+             ocultarFormularios();
+             document.getElementById('mensajeFinal').style.display = 'block';
+        }
     }
 
-    //document.getElementById('resultado').innerHTML =
     document.getElementById('letrasUsadas').innerHTML = LetrasUsadas;
-  }
-
-
- function CompararLetra(letra, PalabraAdivinar, comoVa) 
+}
+function CompararLetra(letra, PalabraAdivinar, comoVa) 
 {
     if (!comoVa || !PalabraAdivinar || !letra) return false;
 
@@ -51,74 +67,54 @@ let PalabraAdivinar = (PPalabraAdivinar !== undefined && PPalabraAdivinar !== nu
         comoVaArr = Array.from('_'.repeat(PalabraAdivinar.length));
     }
 
+    let acierto = false;
     for (let i = 0; i < PalabraAdivinar.length; i++)
     {
-        if (PalabraAdivinar[i].toUpperCase() === letra.toUpperCase())
+        if (PalabraAdivinar[i].toUpperCase().trim() === letra.toUpperCase().trim())
         {
-            comoVaArr[i] = PalabraAdivinar[i].toUpperCase();
+            comoVaArr[i] = PalabraAdivinar[i].toUpperCase().trim();
+            acierto = true;
         }
     }
 
     const nuevoComoVa = comoVaArr.join('');
     comoVa.textContent = nuevoComoVa;
 
-   
+    return acierto; 
 
 }
-  function CompararPalabra(PalabraAdivinar,palabraUser) 
-  {
-    let esIgual = false
-    if(PalabraAdivinar == palabraUser)
-    {
-         esIgual = true
-         alert('Ganasteee :)' )
-     
+function CompararPalabra(PalabraAdivinar, palabraUser) {
+    var intentosVisual = document.getElementById('intentosVisual');
+    var inputIntentos = document.getElementById('intentos');
+    let esIgual = false;
+
+    if (PalabraAdivinar == palabraUser.toUpperCase().trim()) {
+        esIgual = true;
+        var intentosMostrados = intentosVisual ? intentosVisual.textContent : (inputIntentos ? inputIntentos.value : "0");
+        alert("Ganaste con " + intentosMostrados + " intentos, la Palabra era " + PalabraAdivinar.toLowerCase());
+    } else {
+        IncrementarIntentos();
+        alert('Perdiste, la palabra era ' + PalabraAdivinar);
     }
-    else {
-        alert('Perdiste :(')
-    }
-    return esIgual
-    
+    return esIgual;
+}
 
-
-  }
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  function IncrementarIntentos (){
+  
+    var inputIntentos = document.getElementById('intentos');
+    var intentosVisual = document.getElementById('intentosVisual');
+    var intentosActuales = parseInt(inputIntentos.value, 10) || 0;
+    intentosActuales++;
+    inputIntentos.value = intentosActuales;
+    intentosVisual.textContent = intentosActuales;
+}
+function ocultarFormularios() {
+    document.querySelectorAll('form').forEach(form => {
+        if (form.id !== 'Fin') {
+            form.style.display = 'none';
+        }
+    });
+  
+    let mensajeFinal = document.getElementById('mensajeFinal');
+    if (mensajeFinal) mensajeFinal.style.display = 'block';
+}

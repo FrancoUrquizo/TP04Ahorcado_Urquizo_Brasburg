@@ -4,12 +4,15 @@ using System.Linq;
 
 public class Juego
 {
-    //poner lo de jasopnProperty
    
     public List<char> ListLetrasUsuario = new List<char>();
 
     public int contadorInt { get; set; }
     public int ultimoId { get; private set; }
+
+    // <-- agregar propiedad Dificultad aquí (del juego, no del usuario)
+    public int Dificultad { get; private set; }
+
     public List<Palabra> posiblesPalabras = new List<Palabra>();
     public Usuario UsuarioActual;
     public List<Usuario> ListUsu { get; set; } = new List<Usuario>();
@@ -19,17 +22,19 @@ public class Juego
 
     public void InicializarJuego(string NombreUsuario, int dificultad)
     {
-        LlenarPalabras();
-        ListLetrasUsuario = new List<char>();
-        contadorInt = 0;
+       
+            LlenarPalabras();
+            ListLetrasUsuario = new List<char>();
+            contadorInt = 0;
 
-        palabraSeleccionada = CargarPalabra(dificultad)?.ToUpper() ?? "";
+            palabraSeleccionada = CargarPalabra(dificultad)?.ToUpper() ?? "";
 
-    
-        ultimoId++;
-        UsuarioActual = new Usuario(NombreUsuario, contadorInt);
+            ultimoId++;
+            Dificultad = dificultad;
+
+         
+            UsuarioActual = new Usuario(NombreUsuario, contadorInt);
     }
-
 
 
     public char[] Principio()
@@ -91,7 +96,7 @@ public class Juego
             new Palabra("desoxirribonucleico", 4),
             new Palabra("circunferencia", 4),
             new Palabra("inconstitucional", 4),
-            new Palabra("otorrinolaringólogo", 4),
+            new Palabra("otorrinolaringologo", 4),
             new Palabra("transustanciación", 4)
         };
     }
@@ -108,8 +113,26 @@ public class Juego
 
     public void FinalizarJuego(int intentos)
     {
-        UsuarioActual.ActualizarIntentos(intentos);
-        ListUsu.Add(UsuarioActual);
+     
+    if (UsuarioActual == null)
+            {
+                UsuarioActual = new Usuario("Anonimo", 0);
+            }
+
+           
+            UsuarioActual.ActualizarIntentos(intentos);
+
+           
+            var existing = ListUsu.FirstOrDefault(u => u.nombre == UsuarioActual.nombre);
+            if (existing == null)
+            {
+                
+                ListUsu.Add(new Usuario(UsuarioActual.nombre, UsuarioActual.CantidadIntentos));
+            }
+            else
+            {
+                existing.ActualizarIntentos(UsuarioActual.CantidadIntentos);
+            }
     }
 
     public List<Usuario> DevolverListaUsuarios()

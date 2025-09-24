@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\build\TP04_Urquizo_Brasburg.props" />
+  <Import Project="../build/TP04_Urquizo_Brasburg.props" />
 </Project>
